@@ -16,10 +16,10 @@ def getGitHubInfo(gitHubUserId):
         return "gitHubUserId must be a string"
     resultList = []
     gitHubInfo = requests.get(urlString)
-    gitHubInfoJson = json.loads(gitHubInfo.content)
+    gitHubInfoJson = json.loads(gitHubInfo.content.decode('utf-8'))
     for repo in gitHubInfoJson:
         gitCommits = requests.get("https://api.github.com/repos/" + gitHubUserId + "/" + repo['name'] + "/commits")
-        gitCommitsJson = json.loads(gitCommits.content)
+        gitCommitsJson = json.loads(gitCommits.content.decode('utf-8'))
         count = 0
         for commitItem in gitCommitsJson:
             count += 1
