@@ -97,6 +97,7 @@ class TestHw04a(unittest.TestCase):
          
          
 # The below tests don't actually need mocking, but I wrote them using mocking above
+# MOcking is not necessary, as exception handling returns before the API call in all below cases
          
     def testInvalidInput1(self):
         self.assertEqual(getGitHubInfo(77), 'gitHubUserId must be a string', 'Only a string may be passed to getGitHubInfo().')
