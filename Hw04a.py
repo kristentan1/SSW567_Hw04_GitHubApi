@@ -18,12 +18,12 @@ def getGitHubInfo(gitHubUserId):
     gitHubInfo = requests.get(urlString)
     gitHubInfoJson = json.loads(gitHubInfo.content.decode('utf-8'))
     for repo in gitHubInfoJson:
-        gitCommits = requests.get("https://api.github.com/repos/" + gitHubUserId + "/" + repo['name'] + "/commits")
+        gitCommits = requests.get("https://api.github.com/repos/" + gitHubUserId + "/" + repo["name"] + "/commits")
         gitCommitsJson = json.loads(gitCommits.content.decode('utf-8'))
         count = 0
         for commitItem in gitCommitsJson:
             count += 1
-        resultList.append([repo['name'], count])
+        resultList.append([repo["name"], count])
     return resultList #repos will be alphabetical
 
-# Adding a comment to attempt to fix error w Travis CI
+# Attempting to fix Travis
